@@ -1,0 +1,15 @@
+
+server:
+  port: 8081
+eureka:
+  #eureka默认情况下,把自己当做客户端来注册自己,所以我们要禁用它
+  client:
+     registerWithEureka: true #把自身当做客户端注册到其他Eureka服务器
+     fetchRegistry: true #在本地缓存所有实例注册信息
+     service-url:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  instance:
+    hostname: 127.0.0.1
+spring:
+  application:
+    name: eureka-server

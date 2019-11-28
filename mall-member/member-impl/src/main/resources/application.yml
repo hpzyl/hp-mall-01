@@ -1,0 +1,30 @@
+
+
+spring:
+  jpa:
+    database: oracle
+    show-sql: true
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: upright
+    password: upright
+  application:
+    name: member
+
+server:
+  port: 8080
+
+eureka:
+  #eureka默认情况下,把自己当做客户端来注册自己,所以我们要禁用它
+  client:
+    register-with-eureka: true #表示是否将自己注册到Eureka Server上，默认为true
+    fetch-registry: true    #表示是否从Eureka Server上获取注册信息，默认为true
+    service-url:
+          defaultZone:  http://${eureka.instance.hostname}:8081/eureka
+  instance:
+    hostname: 127.0.0.1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
